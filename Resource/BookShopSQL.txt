@@ -1,0 +1,20 @@
+DROP DATABASE IF EXISTS BookShop;
+CREATE DATABASE IF NOT EXISTS BookShop;
+USE BookShop;
+
+DROP TABLE IF EXISTS User;
+CREATE TABLE User (
+	userId VARCHAR(50) NOT NULL,
+	userSecret VARCHAR(50) NOT NULL,
+	PRIMARY KEY(userId) );
+    
+
+DROP TABLE IF EXISTS Book;
+CREATE TABLE Book(
+	bookName VARCHAR(50) NOT NULL,
+	bookAuthor VARCHAR(50) NOT NULL,
+	bookPrice DECIMAL(6,2) NOT NULL,
+	PRIMARY KEY(bookName) );
+	
+SELECT * from User;
+SELECT * from Book;
