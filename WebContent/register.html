@@ -2,20 +2,21 @@
 <html>
 <head>
 <title>BookShop User Register Page</title>
+<script src="Js/main.js"></script>
 </head>
 <body>
 	
 	<h1>BookShop User Register Page</h1>
-	<form action="rest/users" method="POST">
+	<form action="rest/users" method="POST" action="http://localhost:8080/BookShop/rest/users" >
 		<label for="userId">Name</label>
-		<input name="userId" />
+		<input name="userId" type="text"/>
 		<br />
 
 		<label for="userSecret">Password</label>
-		<input name="userSecret" />
+		<input name="userSecret" type="text" />
 		<br />
 
-		<input type="submit" value="Submit" />
+		<input type="submit" value="Submit" id="submit"/>
 	</form>
 </body>
 </html>

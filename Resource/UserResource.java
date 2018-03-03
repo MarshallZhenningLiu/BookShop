@@ -1,13 +1,10 @@
 package myApp;
 
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.logging.Logger;
 
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
-
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
@@ -19,11 +16,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import javax.xml.bind.DatatypeConverter;
-
-import com.oschrenk.io.Base64;
-
-import javax.servlet.http.HttpServletResponse;
 
 
 
@@ -59,34 +51,7 @@ public class UserResource {
 
 		User user = new User();
 		user.setUserId(userId);
-		
-		KeyGenerator kg = null;
-		try {
-			kg = KeyGenerator.getInstance("HmacSHA256");
-		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	    SecretKey sk = kg.generateKey();
-	    //String encodedKey = Base64.getEncoder().encodeToString(sk.getEncoded());
-	    String encodedKey = DatatypeConverter.printBase64Binary(sk.getEncoded());
-	    /*
-	     * https://stackoverflow.com/questions/14413169/which-java-library-provides-base64-encoding-decoding
-	     * Encoding
-
-	    byte[] message = "hello world".getBytes("UTF-8");
-	    String encoded = DatatypeConverter.printBase64Binary(message);
-	    System.out.println(encoded);
-	    // => aGVsbG8gd29ybGQ=  
-	    Decoding
-
-	    byte[] decoded = DatatypeConverter.parseBase64Binary("aGVsbG8gd29ybGQ=");
-	    System.out.println(new String(decoded, "UTF-8"));
-	    // => hello world
-*/	    
-	    
 		user.setUserSecret(userSecret);		
-		
 		
 		UserDao.instance.create(user);
 		servletResponse.sendRedirect("../register.html");
