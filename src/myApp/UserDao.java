@@ -68,7 +68,7 @@ public enum UserDao {
 	    	Class.forName("com.mysql.jdbc.Driver");
 	    	con=DriverManager.getConnection(url+dbName, userName, password);
 	    	stmt = con.createStatement();
-	    	rs = stmt.executeQuery("select * from User where userId like  \"_" + userId +"\""  );
+	    	rs = stmt.executeQuery("select * from User where userId like  \"" + userId +"\""  );
 	    	while(rs.next()) {
 	    		User user = new User();
 	    		user.setUserId(rs.getString("userId"));
@@ -98,7 +98,7 @@ public enum UserDao {
 	    	con=DriverManager.getConnection(url+dbName, userName, password);
 	    	stmt = con.createStatement();
 	    	
-	    	int row = stmt.executeUpdate("insert into user  values (\" " + userId + "\" ,\"" + userSecret + "\")");    	
+	    	int row = stmt.executeUpdate("insert into user  values (\"" + userId + "\" ,\"" + userSecret + "\")");    	
 	    	
 	    }catch(Exception e) {
 	    	e.printStackTrace();

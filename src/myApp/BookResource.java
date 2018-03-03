@@ -55,7 +55,11 @@ public class BookResource {
 		Book book = new Book();
 		book.setBookAuthor("bookName");
 		book.setBookAuthor("bookAuthor");
-		book.setBookPrice(Double.parseDouble(bookPrice));
+		Double bookPriceDouble = 0.0; // default value
+		if(bookPrice != null) {
+		    bookPriceDouble = Double.parseDouble(bookPrice);
+		}
+		book.setBookPrice(bookPriceDouble);
 		
 		BookDao.instance.create(book);
 		servletResponse.sendRedirect("../register.html");
