@@ -85,21 +85,20 @@ public class UserResource {
 	    // => hello world
 */	    
 	    
-		user.setUserSecret(userSecret);		
-		
+		user.setUserSecret(userSecret);				
 		
 		UserDao.instance.create(user);
 		servletResponse.sendRedirect("../register.html");
 	}
 
-	@DELETE
+	/*@DELETE
 	@Produces(MediaType.TEXT_HTML)
 	@Path("{userId}")
 	public void deleteUser(@PathParam("userId") String userId) throws IOException {
 		LOG.info("-------------------deleteUser line 64: " + userId);
 
 		UserDao.instance.delete(userId);
-	}
+	}*/
 
 	@PUT
 	@Produces(MediaType.TEXT_HTML)
